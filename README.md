@@ -1,51 +1,39 @@
-# Personal-Portfolio
-Was tired of all the Bulky and weird looking Portfolio so builts something so minimalistic, Yet pretty.
+# Personal Portfolio  
+Tired of bulky and overly complex portfolios? I created something minimalistic yet visually appealing.  
 
+**LIVE DEMO**: [Click Here](https://ilove-kanye.glitch.me/)  
 
-LIVE DEMO : [Click Here](https://ilove-kanye.glitch.me/)
+---
 
-NOTE : You Can Host your own on Glitch.
+## Prerequisites  
+- **Glitch Account**: [Create one here](https://glitch.com/)  
 
-# PreRequisites
+---
 
-Glitch Account : [Click here](https://glitch.com/)
+## Installation  
 
-# Installation 
+Follow these simple steps to set up your portfolio:  
 
-1. Open Glitch
+1. **Open Glitch**  
+   - Click on **"New Project"** in the top-right corner.  
 
-```pyton
-git clone https://github.com/SamirXR/OpenAI-Reverse-Proxy
-```
+2. **Import from GitHub**  
+   - Select **"Import from GitHub"** and paste the repository link below:  
+     ```
+     https://github.com/SamirXR/Personal-Portfolio.git
+     ```  
+   - (Make sure to remove any default link that appears.)  
 
-2. Change Directory.
-   
-```pyton
-cd OpenAI-Reverse-Proxy
-```
+3. **Preview Your Website**  
+   - Click on **"Preview"** → **"Open in New Tab"** to see your webpage live.  
 
-3. Make Your Secret Token/APIs on Replit's Secret.
-   
-```python
- DISCORD_TOKEN
- OPEN_AI_KEY
- MASTER_KEY
-```
+4. **Make Edits**  
+   - Open the `index.html` file to customize your portfolio.  
+   - All changes are auto-saved as you make them.  
 
-4. Install the Requirements
+5. **Customize the Subdomain**  
+   - Go to **Settings** → **Edit Project Details** → Change the project name (e.g., `ilove-kanye`) and save.  
 
-```python
-pip install -r requirements.txt
-```
+🎉 **Congratulations! Your website is now live!**  
 
-5. Then run the API
-```python
-python main.py
-```
-
-Congratulations! Your API is Up and Running!
-
-
-## Usage
-
-Replace the Base_url with your Replit URL and Use Your API Key Generated From Discord Bot/Developer Master Key.
+--- 
