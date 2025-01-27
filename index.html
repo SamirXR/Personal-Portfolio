@@ -1,0 +1,477 @@
+<!-- Yep, this is it, Feel Free to Edit and Play Around!-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YE | PORTFOLIO</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            --text-color: #000000;
+            --secondary-text: #555555;
+            --hover-color: #000000;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --overlay: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] {
+            --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            --text-color: #ffffff;
+            --secondary-text: #aaaaaa;
+            --hover-color: #ffffff;
+            --card-bg: rgba(30, 30, 30, 0.8);
+            --overlay: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            backdrop-filter: blur(10px);
+            background: var(--overlay);
+        }
+
+        .theme-toggle:hover {
+            background: var(--overlay);
+            transform: scale(1.1);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 15vw, 120px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 4vw, 24px);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 8vw, 64px);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .achievement {
+            padding: 30px;
+            background: var(--overlay);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid var(--overlay);
+        }
+
+        .achievement-number {
+            font-size: clamp(36px, 6vw, 48px);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .achievement-text {
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .projects {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .project {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 120px;
+            opacity: 0;
+            animation: slideIn 1s ease-out forwards;
+            background: var(--overlay);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--overlay);
+        }
+
+        .project-image {
+            aspect-ratio: 16/9;
+            background: var(--overlay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-year {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: clamp(36px, 6vw, 48px);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .project-description {
+            font-size: clamp(16px, 3vw, 20px);
+            opacity: 0.7;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .project-link {
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--text-color);
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .contact h2 {
+            font-size: clamp(36px, 6vw, 48px);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .contact p {
+            font-size: clamp(18px, 4vw, 24px);
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(16px, 3vw, 20px);
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            background: var(--overlay);
+            border-radius: 25px;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        @media (min-width: 968px) {
+            .project {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+
+            .project:nth-child(even) {
+                direction: rtl;
+            }
+
+            .project-content {
+                direction: ltr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-circle-half-stroke"></i>
+    </button>
+    
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">YE</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#vision">Vision</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>YE</h1>
+            <p>ARTIST / DESIGNER / VISIONARY</p>
+        </div>
+    </section>
+
+    <section id="vision" class="section">
+        <div class="section-content">
+            <h2 class="section-title">VISION</h2>
+            <p>THROUGH ART WE CAN CHANGE THE WORLD. MY WORK SPANS MUSIC, FASHION, ARCHITECTURE, AND DESIGN - ALL IN PURSUIT OF A MORE BEAUTIFUL FUTURE.</p>
+            
+            <div class="achievements">
+                <div class="achievement">
+                    <div class="achievement-number">24</div>
+                    <div class="achievement-text">GRAMMY AWARDS</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-number">10</div>
+                    <div class="achievement-text">ALBUMS</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-number">3B+</div>
+                    <div class="achievement-text">STREAMS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="section-content">
+            <h2 class="section-title">PROJECTS</h2>
+
+            <div class="projects">
+                <div class="project">
+                    <div class="project-image">
+                        <img src="https://images.fastcompany.com/image/upload/f_webp,c_fit,w_1920,q_auto/wp-cms/uploads/2023/05/p-1-90895425-adidas-may-donate-yeezy-shoes-instead-of-burning-them.jpg" alt="YEEZY">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2015 - PRESENT</div>
+                        <h2 class="project-title">YEEZY</h2>
+                        <p class="project-description">REVOLUTIONIZING THE FASHION INDUSTRY THROUGH INNOVATIVE DESIGN AND CULTURAL IMPACT. BRIDGING HIGH FASHION WITH ACCESSIBILITY.</p>
+                        <a href="#" class="project-link">EXPLORE PROJECT →</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="https://miccheque.com/wp-content/uploads/2021/09/kanye-west-donda-black-cover.jpg?w=1332&h=666&crop=1" alt="DONDA">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2021</div>
+                        <h2 class="project-title">DONDA</h2>
+                        <p class="project-description">A MUSICAL JOURNEY DEDICATED TO MY MOTHER. PUSHING BOUNDARIES OF SOUND AND PERFORMANCE.</p>
+                        <a href="#" class="project-link">EXPLORE PROJECT →</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="https://media.gq.com/photos/61547385dd1891cbcbc937d7/master/pass/yeezy-gap-lead.jpg" alt="YEEZY HOME">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">2020 - PRESENT</div>
+                        <h2 class="project-title">GAP PARTNERSHIP</h2>
+                        <p class="project-description">REVOLUTIONIZING LIVING SPACES THROUGH MINIMALIST DESIGN AND SUSTAINABLE CLOTHES.</p>
+                        <a href="#" class="project-link">EXPLORE PROJECT →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="contact" class="contact">
+    <h2>CONNECT</h2>
+    <p>LET'S CREATE SOMETHING REVOLUTIONARY</p>
+    <div class="social-links">
+        <a href="#twitter" class="social-link" data-tooltip="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#linkedin" class="social-link" data-tooltip="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:urgay@gmail.com" class="social-link" data-tooltip="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.dataset.theme;
+            body.dataset.theme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.style.transition = 'background 0.5s ease';
+            setTimeout(() => {
+                body.style.transition = 'all 0.3s ease';
+            }, 500);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
