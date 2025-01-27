@@ -34,6 +34,6 @@ Follow these simple steps to set up your portfolio:
 5. **Customize the Subdomain**  
    - Go to **Settings** → **Edit Project Details** → Change the project name (e.g., `ilove-kanye`) and save.  
 
-🎉 **Congratulations! Your website is now live!**  
+**Congratulations! Your website is now live!**  
 
 --- 
